@@ -84,8 +84,8 @@ const StyledInput = styled.input`
 `;
 
 const SubmitButton = styled.button`
-  background: ${({ theme }) => theme.textColor};
-  color: ${({ theme }) => theme.bodyColor};
+  background: ${({ theme }) => theme.colors.primary.text};
+  color: ${({ theme }) => theme.colors.primary.base};
   cursor: pointer;
   display: flex;
   height: 52px;

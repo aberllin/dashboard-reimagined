@@ -1,15 +1,13 @@
 import { useState, useEffect } from 'react';
 import { ThemeProvider } from 'styled-components';
-import { themes } from './styles/theme';
+import { createTheme, type ThemeMode } from './styles/theme';
 import { GlobalStyles } from './styles/global';
 import { NotificationProvider } from './providers/NotificationProvider';
 import { WindowsProvider } from './providers/WindowsProvider';
 import Dashboard from './components/pages/Dashboard';
 
-type Theme = 'light' | 'dark';
-
 function App() {
-  const [theme, setTheme] = useState<Theme>('light');
+  const [theme, setTheme] = useState<ThemeMode>('light');
   function changeTheme() {
     if (theme === 'light') {
       setTheme('dark');
@@ -20,7 +18,9 @@ function App() {
 
   useEffect(() => {
     const inStorage = localStorage.getItem('theme');
-    const initialValue: Theme = inStorage ? (inStorage as Theme) : 'light';
+    const initialValue: ThemeMode = inStorage
+      ? (inStorage as ThemeMode)
+      : 'light';
     setTheme(initialValue);
   }, []);
 
@@ -29,7 +29,7 @@ function App() {
   }, [theme]);
 
   return (
-    <ThemeProvider theme={themes[theme]}>
+    <ThemeProvider theme={createTheme(theme)}>
       <>
         <GlobalStyles />
         <NotificationProvider>

@@ -100,7 +100,7 @@ const TodoText = styled.input<{ todo: TodoType }>`
   outline: none;
   text-overflow: ellipsis;
 
-  color: ${({ theme }) => theme.textColor};
+  color: ${({ theme }) => theme.colors.primary.text};
 
   @media screen and (max-width: 600px) {
     font-size: 14pt;

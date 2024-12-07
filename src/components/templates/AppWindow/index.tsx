@@ -58,7 +58,7 @@ const AppWindow = ({
     options && options.find(opt => opt.title === optionModal);
 
   return (
-    <AppWindowWrapper
+    <Container
       $coordinates={drag.coordinates ?? coordinates}
       $isFullScreen={fullScreen}
       $isScreenCollapsed={isCollapsed}
@@ -125,12 +125,12 @@ const AppWindow = ({
         )}
       </AppCardNav>
       <App>{children}</App>
-    </AppWindowWrapper>
+    </Container>
   );
 };
 
 const MenuButton = styled(HiMenuAlt3)`
-  color: ${({ theme }) => theme.bodyColor};
+  color: ${({ theme }) => theme.colors.primary.base};
   font-size: 20px;
   cursor: pointer;
 `;
@@ -172,7 +172,7 @@ const AppCardNav = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 0 15px;
-  background: ${({ theme }) => theme.textColor};
+  background: ${({ theme }) => theme.colors.primary.text};
 `;
 const App = styled.div`
   width: 100%;
@@ -181,18 +181,19 @@ const App = styled.div`
   overflow-y: auto;
 `;
 
-const AppWindowWrapper = styled.div<{
+const Container = styled.div<{
   $isFullScreen: boolean;
   $isScreenCollapsed: boolean;
   $coordinates: { top: number; left: number };
 }>(
-  ({ $coordinates, $isFullScreen, $isScreenCollapsed }) => css`
+  ({ $coordinates, $isFullScreen, $isScreenCollapsed, theme }) => css`
     position: fixed;
     overflow: hidden;
 
+    box-shadow: ${theme.boxShadow.card};
     font-size: 35px;
-    color: ${({ theme }) => theme.textColor};
-    background-color: ${({ theme }) => theme.bodyColor};
+    color: ${({ theme }) => theme.colors.primary.text};
+    background-color: ${({ theme }) => theme.colors.primary.base};
 
     @media screen and (min-width: 480px) {
       ${$isScreenCollapsed
