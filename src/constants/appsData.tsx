@@ -1,7 +1,7 @@
-import GitHubAccountSearch from 'src/components/apps/GitHubAccountSearch';
 import todoIcon from '../images/Group 24.png';
 import ghIcon from '../images/coolicon.png';
 import type { JSX } from 'react';
+import GitHubAccountSearch from 'src/components/apps/GitHubAccountSearch';
 import Timer from 'src/components/apps/Timer';
 import ToDoApp from 'src/components/apps/TodoApp';
 
