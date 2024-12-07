@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import background_img from 'src/images/background_img.jpeg';
-import { AiFillApple } from 'react-icons/ai';
 import { useWindows } from 'src/providers/WindowsProvider';
 import CurrentDay from 'src/components/atoms/CurrentDay';
 import CurrentTime from 'src/components/atoms/CurrentTime';
@@ -9,6 +8,13 @@ import AppCard from 'src/components/molecules/AppCard';
 import DashboardMenu from 'src/components/organisms/DashboardMenu';
 import { appDataIds, appDataMap } from 'src/constants/appsData';
 import ToggleTheme from 'src/components/atoms/ToggleTheme';
+import JustificationContainer from 'src/components/atoms/JustificationContainer';
+import { Typography } from 'src/components/atoms/Typography';
+import Icon from 'src/components/atoms/Icon';
+
+const text = {
+  title: 'Apps Dashboard',
+};
 
 type DashboardProps = {
   theme: string;
@@ -54,9 +60,9 @@ const Dashboard = ({ changeTheme, theme }: DashboardProps) => {
   return (
     <Container $background={background}>
       <Header>
-        <Title>
-          <AiFillApple /> Apps Dashboard
-        </Title>
+        <JustificationContainer align="center" gap="xxs">
+          <Icon name="apple" /> <Typography size="m">{text.title}</Typography>
+        </JustificationContainer>
         <Date>
           <CurrentDay />
           <CurrentTime />
@@ -110,11 +116,6 @@ const Header = styled.div`
 const Date = styled.div`
   display: flex;
   font-size: 18px;
-`;
-
-const Title = styled.div`
-  text-align: center;
-  font-size: 20px;
 `;
 
 const AppCardsWrapper = styled.div`

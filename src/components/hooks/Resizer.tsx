@@ -85,7 +85,7 @@ const RightBottom = styled.div`
   position: absolute;
   width: 10px;
   height: 10px;
-  background: ${({ theme }) => theme.bodyColor};
+  background: ${({ theme }) => theme.colors.primary.base};
   z-index: 2;
   right: 0;
   bottom: 0;
@@ -96,7 +96,7 @@ const Right = styled.div`
   position: absolute;
   width: 4px;
   height: 100%;
-  background: ${({ theme }) => theme.bodyColor};
+  background: ${({ theme }) => theme.colors.primary.base};
   z-index: 1;
   opacity: 0;
   right: 0;

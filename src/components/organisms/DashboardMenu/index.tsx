@@ -71,7 +71,7 @@ const DashboardMenu = ({ setBackground }: Props) => {
 };
 
 const MenuWrapper = styled.div`
-  background: ${({ theme }) => theme.bodyColor};
+  background: ${({ theme }) => theme.colors.primary.base};
   border-radius: 20px;
   width: 100%;
   height: 100%;

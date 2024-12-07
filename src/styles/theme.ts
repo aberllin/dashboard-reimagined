@@ -1,17 +1,33 @@
-export const lightTheme = {
-  bodyColor: '#FCF6EC',
-  textColor: '#2E3A59',
-  cardShadow:
-    '-10px -10px 15px rgba(255, 255, 255, 0.5), 10px 10px 15px rgba(70, 70, 70, 0.12)',
+import { DefaultTheme } from 'styled-components';
+import { darkColorPalette, lightColorPalette } from './tokens/colorPalette';
+import type { SystemBreakpoint } from './tokens/breakpoints';
+import breakpoints from './tokens/breakpoints';
+import boxShadow from './tokens/boxShadow';
+import sizes, { type SystemSize } from './tokens/sizes';
+
+export type ThemeMode = 'dark' | 'light';
+
+const getCurrentBreakpoint = (): SystemBreakpoint => {
+  if (typeof window === 'undefined') return 'desktop';
+
+  const breakpointEntries = Object.entries(breakpoints);
+  for (const [breakpoint, width] of breakpointEntries) {
+    if (window.matchMedia(`(max-width: ${width})`).matches) {
+      return breakpoint as SystemBreakpoint;
+    }
+  }
+  return 'desktop';
 };
 
-export const darkTheme = {
-  bodyColor: '#2E3A59',
-  textColor: '#FCF6EC',
-  cardShadow: 'none',
-};
+export const createTheme = (themeMode: ThemeMode): DefaultTheme => ({
+  mode: themeMode,
+  colors: themeMode === 'dark' ? darkColorPalette : lightColorPalette,
+  boxShadow,
+  breakpoints,
+  space: (size: SystemSize): string => {
+    const currentBreakpoint = getCurrentBreakpoint();
+    return sizes[currentBreakpoint][size];
+  },
+});
 
-export const themes = {
-  light: lightTheme,
-  dark: darkTheme,
-};
+export type Theme = typeof createTheme;

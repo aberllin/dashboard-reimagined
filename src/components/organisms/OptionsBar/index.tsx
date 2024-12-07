@@ -37,7 +37,7 @@ const OptionsBar = ({ setIsOptionBarOpen, options, setOptionModal }: Props) => {
 
 const OptionsBarBackground = styled.div`
   color: red;
-  background: ${({ theme }) => theme.textColor};
+  background: ${({ theme }) => theme.colors.primary.text};
   width: 100%;
   height: 100%;
   max-width: 250px;
@@ -53,7 +53,7 @@ const CloseIcon = styled.div`
   right: 10px;
   top: 10px;
   cursor: pointer;
-  color: ${({ theme }) => theme.bodyColor};
+  color: ${({ theme }) => theme.colors.primary.base};
   transition: all ease-out 0.2s;
 
   &:hover {
@@ -70,7 +70,7 @@ const OptionsWrapper = styled.div`
 
 const OptionItem = styled.div`
   font-size: 25px;
-  color: ${({ theme }) => theme.bodyColor};
+  color: ${({ theme }) => theme.colors.primary.base};
   cursor: pointer;
   transition: all 0.2s ease;
 

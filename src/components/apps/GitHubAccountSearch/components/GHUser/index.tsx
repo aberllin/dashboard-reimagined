@@ -117,7 +117,7 @@ const Login = styled.a`
   justify-content: center;
   align-items: center;
   padding: 30px;
-  color: ${({ theme }) => theme.textColor};
+  color: ${({ theme }) => theme.colors.primary.text};
 
   @media screen and (max-width: 992px) {
     padding: 25px;
