@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
-import { Dashboard } from './modules/Dashboard';
 import { ThemeProvider } from 'styled-components';
 import { themes } from './styles/theme';
 import { GlobalStyles } from './styles/global';
 import { NotificationProvider } from './providers/NotificationProvider';
 import { WindowsProvider } from './providers/WindowsProvider';
+import Dashboard from './components/pages/Dashboard';
 
 type Theme = 'light' | 'dark';
 
