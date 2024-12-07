@@ -1,14 +1,14 @@
 import React from 'react';
-import { Todo } from './Todo';
 import styled from 'styled-components';
-import { Todo as TodoType } from './Form';
+import TodoItem from '../TodoItem';
+import { Todo as TodoType } from '../Form';
 
 type Props = {
   todos: Array<TodoType>;
   setTodos: (value: Array<TodoType>) => void;
 };
 
-export const ToDoList = ({ todos, setTodos }: Props) => {
+const TodoList = ({ todos, setTodos }: Props) => {
   const refs = todos.map(() => React.createRef<HTMLInputElement>());
 
   const changeFocus = (index: number) => {
@@ -34,7 +34,7 @@ export const ToDoList = ({ todos, setTodos }: Props) => {
     <TodoListWrapper>
       <StyledUl>
         {todos.map((todo, index) => (
-          <Todo
+          <TodoItem
             todos={todos}
             setTodos={setTodos}
             todo={todo}
@@ -53,6 +53,7 @@ const StyledUl = styled.ul`
   margin: 0;
   padding: 0;
 `;
+
 const TodoListWrapper = styled.div`
   margin: 25px 0;
   max-height: 300px;
@@ -70,3 +71,5 @@ const TodoListWrapper = styled.div`
     background: #1ccbb1;
   }
 `;
+
+export default TodoList;

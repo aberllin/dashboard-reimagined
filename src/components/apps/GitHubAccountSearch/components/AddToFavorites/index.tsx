@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react';
 import { AiOutlineStar } from 'react-icons/ai';
-import { GHUserType } from './types';
 import { AiFillStar } from 'react-icons/ai';
+import type { GHUserType } from '../../types';
 
 type Props = {
   user: GHUserType;
 };
 
-export const AddToFavorites = ({ user }: Props) => {
+const AddToFavorites = ({ user }: Props) => {
   const [isFavorite, setIsFavorite] = useState<boolean>(false);
 
   const addToFavorite = () => {
@@ -55,3 +55,5 @@ export const AddToFavorites = ({ user }: Props) => {
     </div>
   );
 };
+
+export default AddToFavorites;

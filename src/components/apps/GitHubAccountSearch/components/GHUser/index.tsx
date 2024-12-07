@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { AddToFavorites } from './AddToFavorites';
-import { GHUserType } from './types';
+import type { GHUserType } from '../../types';
+import AddToFavorites from '../AddToFavorites';
 
 type Props = {
   searchInput: string;
@@ -8,7 +8,7 @@ type Props = {
   errors: string;
 };
 
-export const GHUser = ({ errors, user, searchInput }: Props) => {
+const GHUser = ({ errors, user, searchInput }: Props) => {
   if (!user) {
     return null;
   }
@@ -160,3 +160,5 @@ const UserWrapper = styled.div`
   align-items: center;
   width: 100%;
 `;
+
+export default GHUser;

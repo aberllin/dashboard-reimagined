@@ -12,7 +12,7 @@ type Props = {
   onClose: () => void;
 };
 
-export const ShareForm = ({
+const ShareForm = ({
   value,
   onInputChange,
   onSubmitButton,
@@ -93,3 +93,5 @@ const ErrorMessage = styled.p`
   margin-top: 0.5rem;
   color: #f00e0e;
 `;
+
+export default ShareForm;

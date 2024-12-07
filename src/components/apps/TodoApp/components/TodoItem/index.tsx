@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { AiOutlineCheckCircle } from 'react-icons/ai';
 import { FiTrash } from 'react-icons/fi';
 import { BiCircle } from 'react-icons/bi';
-import { Todo as TodoType } from './Form';
+import { Todo as TodoType } from '../Form';
 
 type Props = {
   todos: Array<TodoType>;
@@ -13,7 +13,7 @@ type Props = {
   onKeyPress: (event: React.KeyboardEvent<HTMLInputElement>) => void;
 };
 
-export const Todo = React.forwardRef<HTMLInputElement, Props>(
+const TodoItem = React.forwardRef<HTMLInputElement, Props>(
   ({ text, todos, todo, setTodos, onKeyPress }, ref) => {
     const completeHandler = () => {
       setTodos(
@@ -108,3 +108,5 @@ const TodoText = styled.input<{ todo: TodoType }>`
 
   text-decoration: ${props => (props.todo.complete ? 'line-through' : 'none')};
 `;
+
+export default TodoItem;

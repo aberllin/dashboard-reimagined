@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { GHUserType } from '../types';
 import Modal from 'src/components/templates/Modal';
+import type { GHUserType } from '../../../types';
 
 const text = {
   noUsers: 'You don"t have any fav users',
@@ -10,7 +10,7 @@ type Props = {
   onClose: () => void;
 };
 
-export const ShowFavorites = ({ onClose }: Props) => {
+const FavoriteAccounts = ({ onClose }: Props) => {
   const favoriteUsers = localStorage.getItem('favorites');
   const parsedFavorites: Array<GHUserType> = favoriteUsers
     ? JSON.parse(favoriteUsers)
@@ -63,3 +63,5 @@ const LinktoUser = styled.a`
   padding: 25px;
   color: #ffe227;
 `;
+
+export default FavoriteAccounts;

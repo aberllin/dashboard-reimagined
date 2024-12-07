@@ -15,7 +15,7 @@ type Props = {
   setTodos: (value: Array<Todo>) => void;
 };
 
-export const Form = ({ inputText, setInputText, todos, setTodos }: Props) => {
+const Form = ({ inputText, setInputText, todos, setTodos }: Props) => {
   const inputTextHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!inputText && e.target.value === ' ') {
       return false;
@@ -105,3 +105,4 @@ const SubmitButton = styled.button`
 const AddIcon = styled(FiPlus)`
   font-size: 25px;
 `;
+export default Form;

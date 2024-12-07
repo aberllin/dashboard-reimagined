@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
-import { Form } from './Form';
-import { ToDoList } from './ToDoList';
 import styled from 'styled-components';
-import { Todo } from './Form';
-import { ShareOption } from './share_option/ShareOption';
 import AppWindow from 'src/components/templates/AppWindow';
 import type { AppOption } from 'src/constants/appsData';
+import type { Todo as TodoType } from './components/Form';
+import Form from './components/Form';
+import TodoList from './components/TodoList';
+import ShareOption from './components/ShareOption';
 
 type Props = {
   id: string;
@@ -23,7 +23,7 @@ export const ToDoApp = ({
   coordinates,
 }: Props) => {
   const [inputText, setInputText] = useState<string>('');
-  const [todos, setTodos] = useState<Array<Todo>>([]);
+  const [todos, setTodos] = useState<Array<TodoType>>([]);
   const [optionModal, setOptionModal] = useState<null | string>(null);
 
   useEffect(() => {
@@ -67,7 +67,7 @@ export const ToDoApp = ({
           todos={todos}
           setTodos={setTodos}
         />
-        <ToDoList todos={todos} setTodos={setTodos} />
+        <TodoList todos={todos} setTodos={setTodos} />
       </AppWrapper>
     </AppWindow>
   );
@@ -86,3 +86,5 @@ const AppWrapper = styled.div`
     width: 300px;
   }
 `;
+
+export default ToDoApp;

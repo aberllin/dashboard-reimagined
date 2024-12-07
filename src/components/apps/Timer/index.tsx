@@ -8,7 +8,7 @@ type Props = {
   coordinates: { left: number; top: number };
 };
 
-export const Timer = ({
+const Timer = ({
   isCollapsed,
   onCollapse,
   id,
@@ -25,3 +25,5 @@ export const Timer = ({
     <div>Cooming soon...</div>
   </AppWindow>
 );
+
+export default Timer;

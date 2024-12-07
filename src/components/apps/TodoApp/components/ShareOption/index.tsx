@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import { ShareForm } from './ShareForm';
-import { FormSuccess } from './FormSuccess';
 import Modal from 'src/components/templates/Modal';
+import FormSuccess from './FormSuccess';
+import ShareForm from './ShareForm';
 
 type Props = {
   onClose: () => void;
 };
 
-export const ShareOption = ({ onClose }: Props) => {
+const ShareOption = ({ onClose }: Props) => {
   const [inputValue, setInputValue] = useState<string>('');
   const [errors, setErrors] = useState<string>('');
   const [isSuccess, setIsSuccess] = useState(false);
@@ -52,3 +52,5 @@ export const ShareOption = ({ onClose }: Props) => {
     </Modal>
   );
 };
+
+export default ShareOption;

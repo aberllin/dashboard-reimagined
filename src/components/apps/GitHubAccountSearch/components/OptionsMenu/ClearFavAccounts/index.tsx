@@ -5,7 +5,7 @@ type Props = {
   onClose: () => void;
 };
 
-export const ClearFavorites = ({ onClose }: Props) => {
+const ClearFavAccounts = ({ onClose }: Props) => {
   const handleClear = () => {
     localStorage.removeItem('favorites');
   };
@@ -82,3 +82,5 @@ const Button = styled.div`
     margin: 10px auto;
   }
 `;
+
+export default ClearFavAccounts;

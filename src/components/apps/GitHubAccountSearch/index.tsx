@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { GHDataFetching } from './GHDataFetching';
 import { useNotification } from '../../../providers/NotificationProvider';
-import { ShowFavorites } from './ghsearch_options/ShowFavorites';
-import { ClearFavorites } from './ghsearch_options/ClearFavorites';
 import AppWindow from 'src/components/templates/AppWindow';
 import type { AppOption } from 'src/constants/appsData';
+import FavoriteAccounts from './components/OptionsMenu/FavoriteAccounts';
+import ClearFavAccounts from './components/OptionsMenu/ClearFavAccounts';
+import GHDataFetching from './components/GHDataFetching';
 
 type Props = {
   id: string;
@@ -15,7 +15,7 @@ type Props = {
   coordinates: { left: number; top: number };
 };
 
-export const GHSearch = ({
+const GitHubAccountSearch = ({
   isCollapsed,
   onCollapse,
   id,
@@ -44,11 +44,11 @@ export const GHSearch = ({
   const options: Array<AppOption> = [
     {
       title: 'Show favorites',
-      component: <ShowFavorites onClose={() => setOptionModal(null)} />,
+      component: <FavoriteAccounts onClose={() => setOptionModal(null)} />,
     },
     {
       title: 'Clear favorites',
-      component: <ClearFavorites onClose={() => setOptionModal(null)} />,
+      component: <ClearFavAccounts onClose={() => setOptionModal(null)} />,
     },
   ];
 
@@ -114,3 +114,5 @@ const StyledInput = styled.input`
   padding: 15px;
   border-radius: 20px;
 `;
+
+export default GitHubAccountSearch;

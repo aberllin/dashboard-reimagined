@@ -1,14 +1,14 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { GHUser } from './GHUser';
-import { GHUserType } from './types';
 import styled from 'styled-components';
+import type { GHUserType } from '../../types';
+import GHUser from '../GHUser';
 
 type Props = {
   searchInput: string;
 };
 
-export const GHDataFetching = ({ searchInput }: Props) => {
+const GHDataFetching = ({ searchInput }: Props) => {
   const [user, setUser] = useState<GHUserType | null>(null);
   const [errors, setErrors] = useState('');
 
@@ -43,3 +43,5 @@ const Div = styled.div`
   width: 100%;
   max-width: 80%;
 `;
+
+export default GHDataFetching;

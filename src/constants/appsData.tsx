@@ -1,9 +1,9 @@
-import { GHSearch } from '../components/apps/search_github_account/GHSearch';
-import { Timer } from '../components/apps/timer/Timer';
-import { ToDoApp } from '../components/apps/todo_app/ToDoApp';
+import GitHubAccountSearch from 'src/components/apps/GitHubAccountSearch';
 import todoIcon from '../images/Group 24.png';
 import ghIcon from '../images/coolicon.png';
 import type { JSX } from 'react';
+import Timer from 'src/components/apps/Timer';
+import ToDoApp from 'src/components/apps/TodoApp';
 
 export type MapType = {
   title: string;
@@ -38,7 +38,7 @@ export const appDataMap: { [id: string]: MapType } = {
     title: 'Search GitHub Account',
     image: ghIcon,
     app: (isCollapsed, onClose, collapseWindow, id, coordinates) => (
-      <GHSearch
+      <GitHubAccountSearch
         isCollapsed={isCollapsed}
         onCollapse={collapseWindow}
         onClose={onClose}
