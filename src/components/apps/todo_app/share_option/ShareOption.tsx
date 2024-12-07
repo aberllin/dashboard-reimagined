@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { ShareForm } from './ShareForm';
 import { FormSuccess } from './FormSuccess';
-import { Modal } from '../../../common/Modal';
+import Modal from 'src/components/templates/Modal';
 
 type Props = {
   onClose: () => void;

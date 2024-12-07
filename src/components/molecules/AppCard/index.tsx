@@ -1,14 +1,14 @@
 import styled from 'styled-components';
-import { mapType } from '../modules/appsData';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
+import type { MapType } from 'src/constants/appsData';
 
 type Props = {
-  image: mapType['image'];
-  title: mapType['title'];
+  image: MapType['image'];
+  title: MapType['title'];
 };
 
-export const AppCard = ({ image, title }: Props) => (
+const AppCard = ({ image, title }: Props) => (
   <CardContainer>
     <Tooltip arrow={false} content={title}>
       <Image>
@@ -85,3 +85,5 @@ const CardContainer = styled.div`
   text-align: center;
   padding: 5px;
 `;
+
+export default AppCard;

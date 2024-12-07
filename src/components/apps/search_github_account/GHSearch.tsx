@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { GHDataFetching } from './GHDataFetching';
 import { useNotification } from '../../../providers/NotificationProvider';
-import { AppWindow } from '../../AppWindow';
 import { ShowFavorites } from './ghsearch_options/ShowFavorites';
 import { ClearFavorites } from './ghsearch_options/ClearFavorites';
-import { AppOption } from '../../../modules/appsData';
+import AppWindow from 'src/components/templates/AppWindow';
+import type { AppOption } from 'src/constants/appsData';
 
 type Props = {
   id: string;

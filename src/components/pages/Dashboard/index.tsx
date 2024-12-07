@@ -1,20 +1,21 @@
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { AppCard } from '../components/AppCard';
-import { appDataIds, appDataMap } from './appsData';
-import Toggle from '../components/Toggle';
-import background_img from '../images/background_img.jpeg';
-import { CurrentTime } from './date/currentTime';
-import { CurrentDay } from './date/currentDay';
-import { DashboardMenu } from './menu/DashboardMenu';
-import { useWindows } from '../providers/WindowsProvider';
+import background_img from 'src/images/background_img.jpeg';
+import { AiFillApple } from 'react-icons/ai';
+import { useWindows } from 'src/providers/WindowsProvider';
+import CurrentDay from 'src/components/atoms/CurrentDay';
+import CurrentTime from 'src/components/atoms/CurrentTime';
+import AppCard from 'src/components/molecules/AppCard';
+import DashboardMenu from 'src/components/organisms/DashboardMenu';
+import { appDataIds, appDataMap } from 'src/constants/appsData';
+import ToggleTheme from 'src/components/atoms/ToggleTheme';
 
 type DashboardProps = {
   theme: string;
   changeTheme: () => void;
 };
 
-export const Dashboard = ({ changeTheme, theme }: DashboardProps) => {
+const Dashboard = ({ changeTheme, theme }: DashboardProps) => {
   const [background, setBackground] = useState<string>(background_img);
   const { onCloseWindow, setWindows, windows, collapseWindow } = useWindows();
 
@@ -53,14 +54,16 @@ export const Dashboard = ({ changeTheme, theme }: DashboardProps) => {
   return (
     <Container $background={background}>
       <Header>
-        <Title>Apps Dashboard</Title>
+        <Title>
+          <AiFillApple /> Apps Dashboard
+        </Title>
         <Date>
           <CurrentDay />
           <CurrentTime />
         </Date>
       </Header>
       <AppCardsWrapper>
-        {appDataIds.map(id => {
+        {appDataIds.map((id: string) => {
           const app = appDataMap[id];
           return (
             <div key={id} onClick={() => openWindow(id)}>
@@ -70,7 +73,7 @@ export const Dashboard = ({ changeTheme, theme }: DashboardProps) => {
         })}
       </AppCardsWrapper>
       <DashboardMenu setBackground={setBackground} />
-      <Toggle onClick={changeTheme} theme={theme} />
+      <ToggleTheme onClick={changeTheme} theme={theme} />
       {windows &&
         windows.map(({ id, isCollapsed, coordinates }) => {
           const app = appDataMap[id];
@@ -148,3 +151,5 @@ const AppCardsWrapper = styled.div`
     width: 100%;
   }
 `;
+
+export default Dashboard;

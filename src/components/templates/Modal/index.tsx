@@ -1,19 +1,19 @@
 import { useRef, type JSX } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { IoMdClose } from 'react-icons/io';
-import { useOutsideClick } from '../hooks/useOutsideClick';
+import { useOutsideClick } from 'src/components/hooks/useOutsideClick';
 
 type Props = {
   width: string;
   height: string;
-  onClose: () => void;
   title: string;
   children: JSX.Element;
   top: string;
   left: string;
+  onClose: () => void;
 };
 
-export const Modal = ({
+const Modal = ({
   children,
   width,
   height,
@@ -22,19 +22,20 @@ export const Modal = ({
   top,
   left,
 }: Props) => {
-  const ref = useRef(null);
+  const ref = useRef<HTMLDivElement | null>(null);
 
   useOutsideClick(ref, () => {
     onClose();
   });
+
   return (
     <>
       <ModalBackground />
       <Wrapper
-        width={parseInt(width)}
-        height={parseInt(height)}
-        left={parseInt(left)}
-        top={parseInt(top)}
+        $width={parseInt(width)}
+        $height={parseInt(height)}
+        $left={parseInt(left)}
+        $top={parseInt(top)}
         ref={ref}
       >
         <NavWrapper>
@@ -79,19 +80,23 @@ const NavWrapper = styled.div`
   color: #2e3a59;
 `;
 const Wrapper = styled.div<{
-  width: number;
-  height: number;
-  left: number;
-  top: number;
-}>`
-  position: fixed;
-  background: white;
-  border: 5px solid #2e3a59;
-  border-radius: 20px;
-  padding: 20px;
-  z-index: 10;
-  width: ${props => props.width}px;
-  height: ${props => props.height}px;
-  left: ${props => props.left}%;
-  top: ${props => props.top}%;
-`;
+  $width: number;
+  $height: number;
+  $left: number;
+  $top: number;
+}>(
+  ({ $height, $left, $top, $width }) => css`
+    position: fixed;
+    background: white;
+    border: 5px solid #2e3a59;
+    border-radius: 20px;
+    padding: 20px;
+    z-index: 10;
+    width: ${$width}px;
+    height: ${$height}px;
+    left: ${$left}%;
+    top: ${$top}%;
+  `,
+);
+
+export default Modal;

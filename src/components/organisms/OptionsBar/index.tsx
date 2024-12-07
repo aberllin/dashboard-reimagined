@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { IoMdClose } from 'react-icons/io';
-import { AppOption } from '../modules/appsData';
+import type { AppOption } from 'src/constants/appsData';
 
 type Props = {
   setIsOptionBarOpen: React.Dispatch<React.SetStateAction<boolean>>;
@@ -9,11 +9,7 @@ type Props = {
   setOptionModal?: (title: string) => void;
 };
 
-export const OptionsBar = ({
-  setIsOptionBarOpen,
-  options,
-  setOptionModal,
-}: Props) => {
+const OptionsBar = ({ setIsOptionBarOpen, options, setOptionModal }: Props) => {
   const handleOptionClick = (option: AppOption) => {
     if (option.callback) {
       return option.callback();
@@ -82,3 +78,5 @@ const OptionItem = styled.div`
     color: green;
   }
 `;
+
+export default OptionsBar;

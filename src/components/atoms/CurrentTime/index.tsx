@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-export const CurrentTime = () => {
+const CurrentTime = () => {
   const [time, setTime] = useState({ date: new Date() });
 
   const changeTime = () => {
@@ -21,3 +21,5 @@ export const CurrentTime = () => {
     </>
   );
 };
+
+export default CurrentTime;

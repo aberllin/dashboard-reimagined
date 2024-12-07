@@ -5,17 +5,13 @@ type Props = {
   theme: string;
 };
 
-function Toggle({ onClick, theme }: Props) {
-  return (
-    <ButtonWrapper>
-      <ToggleButton onClick={onClick} $toggled={theme}>
-        <Circle $toggled={theme} />
-      </ToggleButton>
-    </ButtonWrapper>
-  );
-}
-
-export default Toggle;
+const ToggleTheme = ({ onClick, theme }: Props) => (
+  <ButtonWrapper>
+    <ToggleButton onClick={onClick} $toggled={theme}>
+      <Circle $toggled={theme} />
+    </ToggleButton>
+  </ButtonWrapper>
+);
 
 const ButtonWrapper = styled.div`
   position: absolute;
@@ -66,3 +62,5 @@ const Circle = styled.div<{ $toggled: string }>`
     }
   }};
 `;
+
+export default ToggleTheme;

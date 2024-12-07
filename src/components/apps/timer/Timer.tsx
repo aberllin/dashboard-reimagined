@@ -1,4 +1,4 @@
-import { AppWindow } from '../../AppWindow';
+import AppWindow from 'src/components/templates/AppWindow';
 
 type Props = {
   id: string;

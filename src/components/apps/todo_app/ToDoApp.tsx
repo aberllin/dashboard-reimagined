@@ -3,9 +3,9 @@ import { Form } from './Form';
 import { ToDoList } from './ToDoList';
 import styled from 'styled-components';
 import { Todo } from './Form';
-import { AppWindow } from '../../AppWindow';
 import { ShareOption } from './share_option/ShareOption';
-import { AppOption } from '../../../modules/appsData';
+import AppWindow from 'src/components/templates/AppWindow';
+import type { AppOption } from 'src/constants/appsData';
 
 type Props = {
   id: string;

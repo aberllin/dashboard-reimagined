@@ -1,18 +1,18 @@
 import { useState, useRef } from 'react';
 import { HiDotsHorizontal } from 'react-icons/hi';
 import styled from 'styled-components';
-import background_img from '../../images/background_img.jpeg';
+import background_img from 'src/images/background_img.jpeg';
 import { IoImageOutline } from 'react-icons/io5';
-import { useOutsideClick } from '../../components/hooks/useOutsideClick';
 import { BsFillImageFill } from 'react-icons/bs';
 import { IoMdClose } from 'react-icons/io';
-import { useWindows } from '../../providers/WindowsProvider';
+import { useOutsideClick } from 'src/components/hooks/useOutsideClick';
+import { useWindows } from 'src/providers/WindowsProvider';
 
 type Props = {
   setBackground: (value: string) => void;
 };
 
-export const DashboardMenu = ({ setBackground }: Props) => {
+const DashboardMenu = ({ setBackground }: Props) => {
   const closeAllWindows = useWindows().closeAllWindows;
   const [isOpenMenu, setIsOpenMenu] = useState<boolean>(false);
   const ref = useRef(null);
@@ -132,3 +132,5 @@ const Option = styled.div`
     color: green;
   }
 `;
+
+export default DashboardMenu;

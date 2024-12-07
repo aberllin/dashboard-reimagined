@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { GHUserType } from '../types';
-import { Modal } from '../../../common/Modal';
+import Modal from 'src/components/templates/Modal';
 
 const text = {
   noUsers: 'You don"t have any fav users',

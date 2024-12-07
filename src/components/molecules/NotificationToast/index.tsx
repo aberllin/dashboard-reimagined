@@ -1,16 +1,16 @@
 import styled from 'styled-components';
-import {
-  NotificationState,
-  NotificationTypes,
-} from '../providers/NotificationProvider';
 import { AiOutlineClose } from 'react-icons/ai';
+import {
+  type NotificationState,
+  NotificationTypes,
+} from 'src/providers/NotificationProvider';
 
 type Props = {
   notification: NotificationState;
   onClose: () => void;
 };
 
-export const Snackbar = ({ notification, onClose }: Props) => (
+const NotificationToast = ({ notification, onClose }: Props) => (
   <Background type={notification.type}>
     {notification.text}
     <CloseIcon onClick={onClose} />
@@ -40,3 +40,5 @@ const Background = styled.div<{ type: NotificationTypes }>`
 const CloseIcon = styled(AiOutlineClose)`
   cursor: pointer;
 `;
+
+export default NotificationToast;

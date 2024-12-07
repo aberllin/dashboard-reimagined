@@ -1,26 +1,26 @@
 import { useEffect, useState, createRef, type JSX } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { GiPlainCircle } from 'react-icons/gi';
 import { HiMenuAlt3 } from 'react-icons/hi';
-import { OptionsBar } from './OptionsBar';
-import { useDrag } from './hooks/useDrag';
-import { Resizer } from './hooks/Resizer';
-import { AppOption } from '../modules/appsData';
-import { useWindows } from '../providers/WindowsProvider';
+import { Resizer } from 'src/components/hooks/Resizer';
+import { useDrag } from 'src/components/hooks/useDrag';
+import { useWindows } from 'src/providers/WindowsProvider';
+import OptionsBar from 'src/components/organisms/OptionsBar';
+import type { AppOption } from 'src/constants/appsData';
 
 type Props = {
   id: string;
   isCollapsed: boolean;
-  onCollapse: (id: string) => void;
-  onClose: (id: string) => void;
   children: JSX.Element;
   options?: Array<AppOption>;
   optionModal?: string | null;
-  setOptionModal?: (title: string) => void;
   coordinates: { left: number; top: number };
+  onCollapse: (id: string) => void;
+  setOptionModal?: (title: string) => void;
+  onClose: (id: string) => void;
 };
 
-export const AppWindow = ({
+const AppWindow = ({
   id,
   isCollapsed,
   onCollapse,
@@ -59,9 +59,9 @@ export const AppWindow = ({
 
   return (
     <AppWindowWrapper
-      coordinates={drag.coordinates ?? coordinates}
-      isFullScreen={fullScreen}
-      isScreenCollapsed={isCollapsed}
+      $coordinates={drag.coordinates ?? coordinates}
+      $isFullScreen={fullScreen}
+      $isScreenCollapsed={isCollapsed}
       ref={navRef}
       onClick={() => {
         dragWindow(
@@ -182,55 +182,51 @@ const App = styled.div`
 `;
 
 const AppWindowWrapper = styled.div<{
-  isFullScreen: boolean;
-  isScreenCollapsed: boolean;
-  coordinates: { top: number; left: number };
-}>`
-  position: fixed;
-  overflow: hidden;
+  $isFullScreen: boolean;
+  $isScreenCollapsed: boolean;
+  $coordinates: { top: number; left: number };
+}>(
+  ({ $coordinates, $isFullScreen, $isScreenCollapsed }) => css`
+    position: fixed;
+    overflow: hidden;
 
-  font-size: 35px;
-  color: ${({ theme }) => theme.textColor};
-  background-color: ${({ theme }) => theme.bodyColor};
+    font-size: 35px;
+    color: ${({ theme }) => theme.textColor};
+    background-color: ${({ theme }) => theme.bodyColor};
 
-  @media screen and (min-width: 480px) {
-    ${props => {
-      if (props.isScreenCollapsed) {
-        return `
-        opacity: 0;
-        z-index: -1000;
-        `;
-      } else {
-        return `
-        opacity: 1;
-        `;
-      }
-    }}
+    @media screen and (min-width: 480px) {
+      ${$isScreenCollapsed
+        ? css`
+            opacity: 0;
+            z-index: -1000;
+          `
+        : css`
+            opacity: 1;
+          `}
 
-    ${props => {
-      if (props.isFullScreen) {
-        return `
-              width: 100% !important;       
-              height: 100% !important;         
-              left: 0 !important;
-              top: 0 !important;
-            `;
-      } else {
-        return `
-       min-width: 600px;
-       min-height: 400px;
-       left: ${props.coordinates.left}px;
-       top: ${props.coordinates.top}px;
-       border-radius: 20px;
-       `;
-      }
-    }};
-  }
+      ${$isFullScreen
+        ? css`
+            width: 100% !important;
+            height: 100% !important;
+            left: 0 !important;
+            top: 0 !important;
+          `
+        : css`
+            min-width: 600px;
+            min-height: 400px;
+            left: ${$coordinates.left}px;
+            top: ${$coordinates.top}px;
+            border-radius: 20px;
+          `}
+    }
 
-  @media screen and (max-width: 480px) {
-    width: 100% !important;
-    height: 100% !important;
-    left: 0 !important;
-    top: 0 !important;
-  }
-`;
+    @media screen and (max-width: 480px) {
+      width: 100% !important;
+      height: 100% !important;
+      left: 0 !important;
+      top: 0 !important;
+    }
+  `,
+);
+
+export default AppWindow;

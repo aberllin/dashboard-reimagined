@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Modal } from '../../../common/Modal';
+import Modal from 'src/components/templates/Modal';
 
 type Props = {
   onClose: () => void;

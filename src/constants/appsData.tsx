@@ -1,11 +1,11 @@
-import todoIcon from '../images/Group 24.png';
-import ghIcon from '../images/coolicon.png';
-import { ToDoApp } from '../components/apps/todo_app/ToDoApp';
 import { GHSearch } from '../components/apps/search_github_account/GHSearch';
 import { Timer } from '../components/apps/timer/Timer';
+import { ToDoApp } from '../components/apps/todo_app/ToDoApp';
+import todoIcon from '../images/Group 24.png';
+import ghIcon from '../images/coolicon.png';
 import type { JSX } from 'react';
 
-export type mapType = {
+export type MapType = {
   title: string;
   image?: string;
   app?: (
@@ -23,7 +23,7 @@ export type AppOption = {
   callback?: () => void;
 };
 
-export const appDataMap: { [id: string]: mapType } = {
+export const appDataMap: { [id: string]: MapType } = {
   '1': {
     title: 'MacOS-like Desktop',
   },

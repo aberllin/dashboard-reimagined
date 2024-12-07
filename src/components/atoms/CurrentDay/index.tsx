@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
-export const CurrentDay = () => {
+const CurrentDay = () => {
   const [day, setDay] = useState({ date: new Date() });
 
   const changeDay = () => {
@@ -23,3 +23,5 @@ export const CurrentDay = () => {
 const Day = styled.div`
   padding-right: 5px;
 `;
+
+export default CurrentDay;

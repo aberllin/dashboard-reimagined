@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { Snackbar } from '../components/Snackbar';
+import NotificationToast from 'src/components/molecules/NotificationToast';
 
 type Props = {
   children: React.ReactNode;
@@ -56,7 +56,10 @@ export const NotificationProvider = ({ children }: Props) => {
     >
       <>
         {notification.text && (
-          <Snackbar notification={notification} onClose={closeSnackbar} />
+          <NotificationToast
+            notification={notification}
+            onClose={closeSnackbar}
+          />
         )}
         {children}
       </>
