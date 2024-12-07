@@ -1,4 +1,4 @@
-import catSentMessage from '../../../../images/catSentMessage.gif';
+import catSentMessage from 'src/images/catSentMessage.gif';
 import styled from 'styled-components';
 
 const FormSuccess = () => (
